@@ -1,0 +1,18 @@
+{
+  "name": "Pariwisata-daerah-API",
+  "version": "1.0.0",
+  "description": "This is an API that let you fetch data about a tourist destination at specific province / city in indonesia",
+  "main": "app.js",
+  "author": "Satria Aluh Perwira Nusa",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./dist/api/app.js",
+    "start-dev": "nodemon ./dist/api/app.js"
+  },
+  "dependencies": {
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0"
+  }
+}

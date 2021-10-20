@@ -6,8 +6,8 @@
   "author": "Satria Aluh Perwira Nusa",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon ./dist/api/app.js",
-    "start:prod": "node ./dist/api/app.js"
+    "start:dev": "nodemon ./dist/api/app.js",
+    "start": "node ./dist/api/app.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

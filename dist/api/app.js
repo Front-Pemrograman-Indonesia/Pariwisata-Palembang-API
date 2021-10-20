@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const path = require('path');
+const PORT = process.env.PORT || 5000;
 
 // Initializing the base directory
 global.__basedir = path.join(__dirname, '../');
@@ -22,6 +23,6 @@ app.use((err, req, res, next) => {
     }
 });
 
-app.listen(3000, () => {
-    console.log(`app listen at port 3000`);
+app.listen(PORT, () => {
+    console.log(`app listen at port ${PORT}`);
 });

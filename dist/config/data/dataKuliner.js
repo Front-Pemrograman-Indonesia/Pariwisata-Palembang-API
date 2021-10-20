@@ -1,28 +1,24 @@
 const data = [
     {
-        nama: 'Universitas Sriwijaya Bukit Besar',
-        latitude: -2.988127,
-        longitude: 104.731928,
+        id: 1,
+        nama: 'RM Sri Melayu',
+        latitude: -2.972067,
+        longitude: 104.729036,
+        thumbnail: '',
         gallery: [
             
         ]
     },
     {
-        nama: 'Jembatan Ampera',
-        latitude: -2.990377,
-        longitude: 104.762298,
+        id: 2,
+        nama: 'Rumah Makan Pindang Musi Rawas',
+        latitude: -2.969763,
+        longitude: 104.733979,
+        thumbnail: '',
         gallery: [
             
         ]
     },
-    {
-        nama: 'Kompleks Olahraga jakabaring',
-        latitude: -3.017441,
-        longitude: 104.798137,
-        gallery: [
-
-        ]
-    }
 ]
 
 module.exports = data;

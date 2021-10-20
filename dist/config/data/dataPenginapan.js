@@ -1,24 +1,30 @@
 const data = [
     {
-        nama: 'Universitas Sriwijaya Bukit Besar',
-        latitude: -2.988127,
-        longitude: 104.731928,
+        id: 1,
+        nama: 'favehotel Palembang',
+        latitude: -2.956123,
+        longitude: 104.746106,
+        thumbnail: '',
         gallery: [
             
         ]
     },
     {
-        nama: 'Jembatan Ampera',
-        latitude: -2.990377,
-        longitude: 104.762298,
+        id: 2,
+        nama: 'Hotel Aston',
+        latitude: -2.954645,
+        longitude: 104.747101,
+        thumbnail: '',
         gallery: [
             
         ]
     },
     {
-        nama: 'Kompleks Olahraga jakabaring',
-        latitude: -3.017441,
-        longitude: 104.798137,
+        id: 3,
+        nama: 'Beston Hotel Palembang',
+        latitude: -2.979685,
+        longitude: 104.756385,
+        thumbnail: '',
         gallery: [
 
         ]

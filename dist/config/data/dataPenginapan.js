@@ -1,7 +1,7 @@
 const data = [
     {
         id: 1,
-        nama: 'favehotel Palembang',
+        name: 'favehotel Palembang',
         latitude: -2.956123,
         longitude: 104.746106,
         thumbnail: '',
@@ -11,7 +11,7 @@ const data = [
     },
     {
         id: 2,
-        nama: 'Hotel Aston',
+        name: 'Hotel Aston',
         latitude: -2.954645,
         longitude: 104.747101,
         thumbnail: '',
@@ -21,7 +21,7 @@ const data = [
     },
     {
         id: 3,
-        nama: 'Beston Hotel Palembang',
+        name: 'Beston Hotel Palembang',
         latitude: -2.979685,
         longitude: 104.756385,
         thumbnail: '',

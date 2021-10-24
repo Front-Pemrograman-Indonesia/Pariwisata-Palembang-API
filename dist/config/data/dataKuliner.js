@@ -1,7 +1,7 @@
 const data = [
     {
         id: 1,
-        nama: 'RM Sri Melayu',
+        name: 'RM Sri Melayu',
         latitude: -2.972067,
         longitude: 104.729036,
         thumbnail: '',
@@ -11,7 +11,7 @@ const data = [
     },
     {
         id: 2,
-        nama: 'Rumah Makan Pindang Musi Rawas',
+        name: 'Rumah Makan Pindang Musi Rawas',
         latitude: -2.969763,
         longitude: 104.733979,
         thumbnail: '',

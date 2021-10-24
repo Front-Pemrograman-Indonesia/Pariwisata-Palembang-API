@@ -6,7 +6,7 @@ const data = [
         longitude: 104.746106,
         thumbnail: '/images/hotel-favehotel-1.jpg',
         gallery: [
-            
+            '/images/hotel-favehotel-1.jpg'
         ]
     },
     {
@@ -16,7 +16,7 @@ const data = [
         longitude: 104.747101,
         thumbnail: '/images/hotel-aston-1.jpg',
         gallery: [
-            
+            '/images/hotel-aston-1.jpg'
         ]
     },
     {
@@ -26,7 +26,7 @@ const data = [
         longitude: 104.756385,
         thumbnail: '/images/hotel-beston-1.jpg',
         gallery: [
-
+            '/images/hotel-beston-1.jpg'
         ]
     }
 ]

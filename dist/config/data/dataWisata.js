@@ -42,7 +42,7 @@ const data = [
         nama: 'Benteng Kuto Besak',
         latitude: -2.991408,
         longitude: 104.759163,
-        thumbnail: '/images/benteng-kuto-besak-1',
+        thumbnail: '/images/benteng-kuto-besak-1.jpg',
         gallery: [
             '/images/benteng-kuto-besak-1.jpg',
             '/images/benteng-kuto-besak-2.jpg',

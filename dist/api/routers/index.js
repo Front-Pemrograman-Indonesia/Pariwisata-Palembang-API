@@ -8,7 +8,7 @@ router.use('/penginapan', require('./penginapan'));
 
 router.use('/tempatibadah', require('./tempatIbadah'));
 
-router.use('/', (req, res, next) => {
+router.get('/', (req, res, next) => {
     try{
         res.status(200).json({
             message: 'hello there! this is the API for the pariwisata palembang that let you get any information about the famous and most visited tourist destination in palembang',

@@ -27,10 +27,8 @@ router.get('/:id', (req, res, next) => {
                 Math.cos( Math.radians( data.longitude ) - Math.radians(parseFloat(longitude)) ) + Math.sin( Math.radians(parseFloat(latitude)) ) * 
                 Math.sin( Math.radians( data.latitude ))));
     
-                newDataTempatIbadah.push({
-                    ...data,
-                    distance
-                });
+                data.distance = distance;
+                newDataTempatIbadah.push(data);
             }
         }
 

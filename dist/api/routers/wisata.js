@@ -51,12 +51,11 @@ router.get('/:id', (req, res, next) => {
         Math.cos( Math.radians( pilihanWisata[0].longitude ) - Math.radians(parseFloat(longitude)) ) + Math.sin( Math.radians(parseFloat(latitude)) ) * 
         Math.sin( Math.radians( pilihanWisata[0].latitude )))): "not defined";
         
-        const finalPilihanWisata = {
-            ...pilihanWisata,
-            distance
-        }
 
-        res.status(200).json({data: finalPilihanWisata});
+        pilihanWisata.distance = distance;
+        
+
+        res.status(200).json({data: pilihanWisata});
     } catch(error) {
         next(error);
     }

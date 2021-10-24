@@ -4,7 +4,7 @@ const data = [
         name: 'favehotel Palembang',
         latitude: -2.956123,
         longitude: 104.746106,
-        thumbnail: '',
+        thumbnail: '/images/hotel-favehotel-1.jpg',
         gallery: [
             
         ]
@@ -14,7 +14,7 @@ const data = [
         name: 'Hotel Aston',
         latitude: -2.954645,
         longitude: 104.747101,
-        thumbnail: '',
+        thumbnail: '/images/hotel-aston-1.jpg',
         gallery: [
             
         ]
@@ -24,7 +24,7 @@ const data = [
         name: 'Beston Hotel Palembang',
         latitude: -2.979685,
         longitude: 104.756385,
-        thumbnail: '',
+        thumbnail: '/images/hotel-beston-1.jpg',
         gallery: [
 
         ]

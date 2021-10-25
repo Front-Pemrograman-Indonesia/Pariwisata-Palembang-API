@@ -2,27 +2,27 @@ const data = [
     {
         id: 1,
         name: 'Masjid',
-        thumbnail: ''
+        thumbnail: '/images/mosque.jpg'
     },
     {
         id: 2,
         name: 'Gereja Katolik',
-        thumbnail: ''
+        thumbnail: '/images/catholic_church.jpg'
     },
     {
         id: 3,
         name: 'Gereja Protestan',
-        thumbnail: ''
+        thumbnail: '/images/protestant_church.jpg'
     },
     {
         id: 4,
         name: 'Vihara',
-        thumbnail: ''
+        thumbnail: '/images/monastery.jpg'
     },
     {
         id: 5,
         name: 'Pura',
-        thumbnail: ''
+        thumbnail: '/images/temple.jpg'
     }
 ]
 

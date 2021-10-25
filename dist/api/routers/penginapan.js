@@ -1,7 +1,7 @@
 const router = require('express')();
 const path = require('path');
 const dataPenginapan = require(path.join(__basedir, '/config', '/data', '/dataPenginapan'));
-Math.radians = (deg) => deg * (Math.PI / 180);
+const calculateDistance = require('../../config/lib/calculateDistance');
 
 router.get('/', (req, res, next) => {
     const latitude = req.query.latitude? req.query.latitude: -2.988095;
@@ -10,21 +10,18 @@ router.get('/', (req, res, next) => {
         const newDataPenginapan= [];
 
         for(let data of dataPenginapan){
-            const distance = 
-            (6371 * Math.acos( Math.cos( Math.radians(parseFloat(latitude)) ) * 
-            Math.cos( Math.radians( data.latitude )) * 
-            Math.cos( Math.radians( data.longitude ) - Math.radians(parseFloat(longitude)) ) + Math.sin( Math.radians(parseFloat(latitude)) ) * 
-            Math.sin( Math.radians( data.latitude ))));
+            const distance = calculateDistance(latitude, longitude, data.latitude, data.longitude);
 
             newDataPenginapan.push({
                 ...data,
-                distance
+                distance,
+                locationStatus: req.query.longitude && req.query.longitude? true: false
             });
         }
 
         newDataPenginapan.sort((firstItem, secondItem) => firstItem.distance - secondItem.distance);
 
-        res.status(200).json({data: newDataPenginapan, dataLength: newDataPenginapan.length});
+        res.status(200).json({ data: newDataPenginapan, dataLength: newDataPenginapan.length });
     } catch(error) {
         next(error);
     }
@@ -36,22 +33,19 @@ router.get('/:id', (req, res, next) => {
     try {
         const { id } = req.params;
 
-        const filterByID = (item) => {
+        const pilihanPenginapan = dataPenginapan.filter((item) => {
             if (item.id === parseInt(id)) {
               return true
             }
             return false;
-        }
+        });
 
-        const pilihanPenginapan = dataPenginapan.filter(filterByID);
-
-        const distance = pilihanPenginapan.length>0?
-        (6371 * Math.acos( Math.cos( Math.radians(parseFloat(latitude)) ) * 
-        Math.cos( Math.radians( pilihanPenginapan[0].latitude )) * 
-        Math.cos( Math.radians( pilihanPenginapan[0].longitude ) - Math.radians(parseFloat(longitude)) ) + Math.sin( Math.radians(parseFloat(latitude)) ) * 
-        Math.sin( Math.radians( pilihanPenginapan[0].latitude )))): "not defined";
+        const distance = pilihanPenginapan.length > 0
+        ? calculateDistance(latitude, longitude, pilihanPenginapan[0].latitude, pilihanPenginapan[0].longitude)
+        : "not defined";
         
         pilihanPenginapan[0].distance = distance;
+        pilihanPenginapan[0].locationStatus = req.query.longitude && req.query.longitude? true: false;
 
         res.status(200).json({data: pilihanPenginapan[0]});
     } catch {

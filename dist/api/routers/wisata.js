@@ -1,7 +1,7 @@
 const router = require('express')();
 const path = require('path');
 const dataWisata = require(path.join(__basedir, '/config', '/data', '/dataWisata'));
-Math.radians = (deg) => deg * (Math.PI / 180);
+const calculateDistance = require('../../config/lib/calculateDistance');
 
 router.get('/', (req, res, next) => {
     const latitude = req.query.latitude? req.query.latitude: -2.988095;
@@ -10,15 +10,12 @@ router.get('/', (req, res, next) => {
         const newDataWisata = [];
 
         for(let data of dataWisata){
-            const distance = 
-            (6371 * Math.acos( Math.cos( Math.radians(parseFloat(latitude)) ) * 
-            Math.cos( Math.radians( data.latitude )) * 
-            Math.cos( Math.radians( data.longitude ) - Math.radians(parseFloat(longitude)) ) + Math.sin( Math.radians(parseFloat(latitude)) ) * 
-            Math.sin( Math.radians( data.latitude ))));
+            const distance = calculateDistance(latitude, longitude, data.latitude, data.longitude);
 
             newDataWisata.push({
                 ...data,
-                distance
+                distance,
+                locationStatus: req.query.longitude && req.query.longitude? true: false
             });
         }
 
@@ -36,26 +33,22 @@ router.get('/:id', (req, res, next) => {
     try {
         const { id } = req.params;
 
-        const filterByID = (item) => {
+        const pilihanWisata = dataWisata.filter((item) => {
             if (item.id === parseInt(id)) {
               return true
             }
             return false;
-        }
+        });
 
-        const pilihanWisata = dataWisata.filter(filterByID);
-
-        const distance = pilihanWisata.length>0?
-        (6371 * Math.acos( Math.cos( Math.radians(parseFloat(latitude)) ) * 
-        Math.cos( Math.radians( pilihanWisata[0].latitude )) * 
-        Math.cos( Math.radians( pilihanWisata[0].longitude ) - Math.radians(parseFloat(longitude)) ) + Math.sin( Math.radians(parseFloat(latitude)) ) * 
-        Math.sin( Math.radians( pilihanWisata[0].latitude )))): "not defined";
+        const distance = pilihanWisata.length > 0
+        ? calculateDistance(latitude, longitude, pilihanWisata[0].latitude, pilihanWisata[0].longitude)
+        : "not defined";
         
 
         pilihanWisata[0].distance = distance;
+        pilihanWisata[0].locationStatus = req.query.longitude && req.query.longitude? true: false;
         
-
-        res.status(200).json({data: pilihanWisata[0]});
+        res.status(200).json({ data: pilihanWisata[0] });
     } catch(error) {
         next(error);
     }

@@ -2,6 +2,7 @@ const router = require('express')();
 const path = require('path');
 const dataTempatIbadah = require(path.join(__basedir, '/config', '/data', '/dataTempatIbadah'));
 const dataTypeTempatIbadah = require(path.join(__basedir, '/config', '/data', '/dataTypeTempatIbadah'));
+const calculateDistance = require('../../config/lib/calculateDistance');
 
 router.get('/', (req, res, next) => {
     try {
@@ -15,26 +16,23 @@ router.get('/:id', (req, res, next) => {
     const latitude = req.query.latitude? req.query.latitude: -2.988095;
     const longitude = req.query.longitude? req.query.longitude: 104.761095;
     const { id } = req.params;
-    Math.radians = (deg) => deg * (Math.PI / 180);
     try {
         const newDataTempatIbadah = [];
 
         for(let data of dataTempatIbadah){
             if(data.idTypeTempatIbadah === parseInt(id)){
-                const distance = 
-                (6371 * Math.acos( Math.cos( Math.radians(parseFloat(latitude)) ) * 
-                Math.cos( Math.radians( data.latitude )) * 
-                Math.cos( Math.radians( data.longitude ) - Math.radians(parseFloat(longitude)) ) + Math.sin( Math.radians(parseFloat(latitude)) ) * 
-                Math.sin( Math.radians( data.latitude ))));
+                const distance = calculateDistance(latitude, longitude, data.latitude, data.longitude);
     
                 data.distance = distance;
+                data.locationStatus = req.query.longitude && req.query.longitude? true: false;
+
                 newDataTempatIbadah.push(data);
             }
         }
 
         newDataTempatIbadah.sort((firstItem, secondItem) => firstItem.distance - secondItem.distance);
 
-        res.status(200).json({data: newDataTempatIbadah, dataLength: newDataTempatIbadah.length});
+        res.status(200).json({ data: newDataTempatIbadah, dataLength: newDataTempatIbadah.length });
     } catch(error) {
         next(error);
     }

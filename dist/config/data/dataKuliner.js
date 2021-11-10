@@ -4,9 +4,9 @@ const data = [
         name: 'RM Sri Melayu',
         latitude: -2.972067,
         longitude: 104.729036,
-        thumbnail: '',
+        thumbnail: '/images/RM-Sri-Melayu.jpg',
         gallery: [
-            
+            '/images/RM-Sri-Melayu.jpg'
         ]
     },
     {
@@ -14,9 +14,9 @@ const data = [
         name: 'Rumah Makan Pindang Musi Rawas',
         latitude: -2.969763,
         longitude: 104.733979,
-        thumbnail: '',
+        thumbnail: '/images/RM-Pindang-Musi-Rawas.jpg',
         gallery: [
-            
+            '/images/RM-Pindang-Musi-Rawas.jpg'
         ]
     },
 ]

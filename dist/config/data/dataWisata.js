@@ -4,7 +4,7 @@ const data = [
         differentLanguage: [
             {
                 language: 'en',
-                name: 'Belida Fish Monumen',
+                name: 'Belida Fish Monument',
                 description: 'test',
             },
             {

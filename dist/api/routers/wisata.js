@@ -26,7 +26,7 @@ router.get('/', async (req, res, next) => {
                 latitude: data.latitude,
                 longitude: data.longitude,
                 thumbnail: data.thumbnail,
-                distance: language === 'ru'? 
+                distance: language === 'ar'? 
                     calculateDistance(latitude, longitude, data.latitude, data.longitude).toLocaleString('ar-EG'):
                     calculateDistance(latitude, longitude, data.latitude, data.longitude),
                 locationStatus: req.query.longitude && req.query.longitude? true: false,
@@ -65,7 +65,7 @@ router.get('/:id', (req, res, next) => {
             longitude: data.longitude,
             thumbnail: data.thumbnail,
             gallery: data.gallery,
-            distance: language === 'ru'? 
+            distance: language === 'ar'? 
                 calculateDistance(latitude, longitude, data.latitude, data.longitude).toLocaleString('ar-EG'):
                 calculateDistance(latitude, longitude, data.latitude, data.longitude),
             locationStatus: req.query.longitude && req.query.longitude? true: false

@@ -1,8 +1,9 @@
-const moment = require('moment');
+const moment = require('moment-timezone');
 
-const OpenOrCloseFunction = (userDateAndTime, destinationOpenSchedules) => {
-  let userDay = moment(userDateAndTime).format('dddd').toLocaleLowerCase();
-  let userTime = moment(userDateAndTime).format();
+const OpenOrCloseFunction = (destinationOpenSchedules) => {
+  const currentTimeInPalembang = moment().tz('Asia/Jakarta').format('YYYY-MM-DD HH:mm')
+  let userDay = moment(currentTimeInPalembang).format('dddd').toLocaleLowerCase();
+  let userTime = moment(currentTimeInPalembang).format();
   for (let destinationSchedule of destinationOpenSchedules) {
       if(destinationSchedule.day === userDay){
           let openTime = moment(destinationSchedule.openTime, 'h:mm:ss').format();

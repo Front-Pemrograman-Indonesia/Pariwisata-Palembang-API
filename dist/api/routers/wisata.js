@@ -2,20 +2,31 @@ const router = require('express')();
 const path = require('path');
 const dataWisata = require(path.join(__basedir, '/config', '/data', '/dataWisata'));
 const calculateDistance = require('../../config/lib/calculateDistance');
+const openOrCloseValidation = require('../../config/lib/openOrCloseValidation');
+
+
 
 router.get('/', (req, res, next) => {
     const latitude = req.query.latitude? req.query.latitude: -2.988095;
     const longitude = req.query.longitude? req.query.longitude: 104.761095;
+    const userDateAndTime = new Date();
     try {
         const newDataWisata = [];
-
         for(let data of dataWisata){
             const distance = calculateDistance(latitude, longitude, data.latitude, data.longitude);
+
+            let openOrClose;
+            if (typeof data.open != "object") {
+                openOrClose = data.open;
+            } else {
+                openOrClose = openOrCloseValidation(userDateAndTime, data.open)? "open": "close";
+            }
 
             newDataWisata.push({
                 ...data,
                 distance,
-                locationStatus: req.query.longitude && req.query.longitude? true: false
+                locationStatus: req.query.longitude && req.query.longitude? true: false,
+                openOrClose
             });
         }
 

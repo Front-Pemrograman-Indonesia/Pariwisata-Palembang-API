@@ -17,7 +17,7 @@ router.get('/', (req, res, next) => {
 
             let openOrClose;
             if (typeof data.open != "object") {
-                openOrClose = data.open;
+                openOrClose = "open";
             } else {
                 openOrClose = openOrCloseValidation(userDateAndTime, data.open)? "open": "close";
             }

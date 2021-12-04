@@ -7,6 +7,7 @@ const data = [
         thumbnail: '/images/tugu-ikan-belida-1.jpg',
         description: 'test',
         location: '',
+        open: "everyday",
         gallery: [
             '/images/tugu-ikan-belida-1.jpg',
             '/images/tugu-ikan-belida-2.jpg',
@@ -21,6 +22,7 @@ const data = [
         thumbnail: '/images/jembatan-ampera-1.jpg',
         description: 'test',
         location: '',
+        open: "everyday",
         gallery: [
             '/images/jembatan-ampera-1.jpg',
             '/images/jembatan-ampera-2.jpg',
@@ -36,6 +38,33 @@ const data = [
         thumbnail: '/images/jakabaring-sport-city-1.jpg',
         description: 'test',
         location: '',
+        open: [
+            {
+                day: 'monday',
+                openTime: '07:00:00.000 +0700',
+                closeTime: '15:00:00.000 +0700'
+            },
+            {
+                day: 'tuesday',
+                openTime: '07:00:00.000 +0700',
+                closeTime: '15:00:00.000 +0700'
+            },
+            {
+                day: 'wednesday',
+                openTime: '07:00:00.000 +0700',
+                closeTime: '15:00:00.000 +0700'
+            },
+            {
+                day: 'thursday',
+                openTime: '07:00:00.000 +0700',
+                closeTime: '15:00:00.000 +0700'
+            },
+            {
+                day: 'saturday',
+                openTime: '07:00:00.000 +0700',
+                closeTime: '12:44:00.000 +0700'
+            },
+        ],
         gallery: [
             '/images/jakabaring-sport-city-1.jpg',
             '/images/jakabaring-sport-city-2.jpg',
@@ -51,6 +80,7 @@ const data = [
         thumbnail: '/images/benteng-kuto-besak-1.jpg',
         description: 'test',
         location: '',
+        open: "everyday",
         gallery: [
             '/images/benteng-kuto-besak-1.jpg',
             '/images/benteng-kuto-besak-2.jpg',

@@ -17,9 +17,9 @@ router.get('/', (req, res, next) => {
 
             let openOrClose;
             if (typeof data.open != "object") {
-                openOrClose = "open";
+                openOrClose = true;
             } else {
-                openOrClose = openOrCloseValidation(userDateAndTime, data.open)? "open": "close";
+                openOrClose = openOrCloseValidation(userDateAndTime, data.open);
             }
 
             newDataWisata.push({

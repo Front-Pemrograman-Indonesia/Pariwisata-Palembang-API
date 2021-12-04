@@ -4,30 +4,36 @@ const dataWisata = require(path.join(__basedir, '/config', '/data', '/dataWisata
 const calculateDistance = require('../../config/lib/calculateDistance');
 const openOrCloseValidation = require('../../config/lib/openOrCloseValidation');
 
+const filterDataByLanguage = (array, language) => {
+    let result = array.find(object => object.language === language);
+    return result? result: array.find(object => object.language === 'en');
+}
 
-
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
     const latitude = req.query.latitude? req.query.latitude: -2.988095;
     const longitude = req.query.longitude? req.query.longitude: 104.761095;
-    const userDateAndTime = new Date();
+    const language = req.query.language? req.query.language: 'en';
     try {
         const newDataWisata = [];
         for(let data of dataWisata){
-            const distance = calculateDistance(latitude, longitude, data.latitude, data.longitude);
-
-            let openOrClose;
-            if (typeof data.open != "object") {
-                openOrClose = true;
-            } else {
-                openOrClose = openOrCloseValidation(data.open);
-            }
-
-            newDataWisata.push({
-                ...data,
-                distance,
+            let filteredData = filterDataByLanguage(data.differentLanguage, language);
+            
+            let newData = {
+                id: data.id,
+                name: filteredData.name,
+                description: filteredData.description,
+                location: data.location,
+                latitude: data.latitude,
+                longitude: data.longitude,
+                thumbnail: data.thumbnail,
+                distance: calculateDistance(latitude, longitude, data.latitude, data.longitude),
                 locationStatus: req.query.longitude && req.query.longitude? true: false,
-                openOrClose
-            });
+                openOrClose: typeof data.open != "object"? true: openOrCloseValidation(data.open)
+            };
+
+            newDataWisata.push(
+                newData
+            );
         }
 
         newDataWisata.sort((firstItem, secondItem) => firstItem.distance - secondItem.distance);
@@ -41,25 +47,27 @@ router.get('/', (req, res, next) => {
 router.get('/:id', (req, res, next) => {
     const latitude = req.query.latitude? req.query.latitude: -2.988095;
     const longitude = req.query.longitude? req.query.longitude: 104.761095;
+    const { id } = req.params;
+    const language = req.query.language? req.query.language: 'en';
     try {
-        const { id } = req.params;
+        const data = dataWisata.find((item) => item.id === parseInt(id));
 
-        const pilihanWisata = dataWisata.filter((item) => {
-            if (item.id === parseInt(id)) {
-              return true
-            }
-            return false;
-        });
+        let filteredData = filterDataByLanguage(data.differentLanguage, language);
 
-        const distance = pilihanWisata.length > 0
-        ? calculateDistance(latitude, longitude, pilihanWisata[0].latitude, pilihanWisata[0].longitude)
-        : "not defined";
-        
+        let newData = {
+            id: data.id,
+            name: filteredData.name,
+            description: filteredData.description,
+            location: data.location,
+            latitude: data.latitude,
+            longitude: data.longitude,
+            thumbnail: data.thumbnail,
+            gallery: data.gallery,
+            distance: calculateDistance(latitude, longitude, data.latitude, data.longitude),
+            locationStatus: req.query.longitude && req.query.longitude? true: false
+        }
 
-        pilihanWisata[0].distance = distance;
-        pilihanWisata[0].locationStatus = req.query.longitude && req.query.longitude? true: false;
-        
-        res.status(200).json({ data: pilihanWisata[0] });
+        res.status(200).json({ data: newData });
     } catch(error) {
         next(error);
     }

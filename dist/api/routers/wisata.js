@@ -26,7 +26,9 @@ router.get('/', async (req, res, next) => {
                 latitude: data.latitude,
                 longitude: data.longitude,
                 thumbnail: data.thumbnail,
-                distance: calculateDistance(latitude, longitude, data.latitude, data.longitude),
+                distance: language === 'ru'? 
+                    calculateDistance(latitude, longitude, data.latitude, data.longitude).toLocaleString('ar-EG'):
+                    calculateDistance(latitude, longitude, data.latitude, data.longitude),
                 locationStatus: req.query.longitude && req.query.longitude? true: false,
                 openOrClose: typeof data.open != "object"? true: openOrCloseValidation(data.open)
             };
@@ -63,7 +65,9 @@ router.get('/:id', (req, res, next) => {
             longitude: data.longitude,
             thumbnail: data.thumbnail,
             gallery: data.gallery,
-            distance: calculateDistance(latitude, longitude, data.latitude, data.longitude),
+            distance: language === 'ru'? 
+                calculateDistance(latitude, longitude, data.latitude, data.longitude).toLocaleString('ar-EG'):
+                calculateDistance(latitude, longitude, data.latitude, data.longitude),
             locationStatus: req.query.longitude && req.query.longitude? true: false
         }
 

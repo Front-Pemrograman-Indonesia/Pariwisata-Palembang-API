@@ -16,9 +16,9 @@ const openHoursFilter = (arrayOfOpenHours, language) => {
     let userDay = moment(currentTimeInPalembang).format('dddd').toLocaleLowerCase();
     for(let openHour of arrayOfOpenHours){
         if(openHour.day === userDay){
-            return language === 'id'? `${moment(openHour.openTime, 'HH:mm:ss').format('HH:mm:ss')} - ${moment(openHour.closeTime, 'HH:mm:ss').format('HH:mm:ss')} WIB`:
-                language === 'ar'? `${moment(openHour.openTime, 'HH:mm:ss').format('hh:mm:ss a')} - ${moment(openHour.closeTime, 'HH:mm:ss').format('hh:mm:ss A')}`: 
-                    `${moment(openHour.openTime, 'HH:mm:ss').format('hh:mm:ss A')} - ${moment(openHour.closeTime, 'HH:mm:ss').format('hh:mm:ss A')}`;
+            return language === 'id'? `${moment(openHour.openTime, 'HH:mm:ss').format('HH:mm')} - ${moment(openHour.closeTime, 'HH:mm:ss').format('HH:mm')} WIB`:
+                language === 'ar'? `${moment(openHour.openTime, 'HH:mm:ss').format('hh:mm a')} - ${moment(openHour.closeTime, 'HH:mm:ss').format('hh:mm A')}`: 
+                    `${moment(openHour.openTime, 'HH:mm:ss').format('hh:mm A')} - ${moment(openHour.closeTime, 'HH:mm:ss').format('hh:mm A')}`;
         }
     }
     

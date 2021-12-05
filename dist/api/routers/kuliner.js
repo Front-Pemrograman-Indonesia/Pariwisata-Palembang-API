@@ -1,22 +1,29 @@
 const router = require('express')();
 const path = require('path');
 const dataKuliner = require(path.join(__basedir, '/config', '/data', '/dataKuliner'));
-const calculateDistance = require('../../config/lib/calculateDistance');
+const calculateDistance = require('../../config/lib/calculateDistanceThenSetLanguage');
+const calculateDistanceThenSetLanguage = require('../../config/lib/calculateDistanceThenSetLanguage');
 
 router.get('/', (req, res, next) => {
     const latitude = req.query.latitude? req.query.latitude: -2.988095;
     const longitude = req.query.longitude? req.query.longitude: 104.761095;
+    const language = req.query.language? req.query.language: 'en';
     try {
         const newDataKuliner = [];
 
-        for(let data of dataKuliner){
-            const distance = calculateDistance(latitude, longitude, data.latitude, data.longitude);
-
-            newDataKuliner.push({
-                ...data,
-                distance,
+        for (let data of dataKuliner) {
+            let newData = {
+                id: data.id,
+                name: data.name,
+                latitude: data.latitude,
+                longitude: data.longitude,
+                thumbnail: data.thumbnail,
+                gallery: data.gallery,
+                distance: calculateDistanceThenSetLanguage(latitude, longitude, data.latitude, data.longitude, language),
                 locationStatus: req.query.longitude && req.query.longitude? true: false
-            });
+            }
+
+            newDataKuliner.push(newData);
         }
 
         newDataKuliner.sort((firstItem, secondItem) => firstItem.distance - secondItem.distance);

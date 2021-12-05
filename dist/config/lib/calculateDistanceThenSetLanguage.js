@@ -7,7 +7,7 @@ const calculateDistance = (latitude, longitude, placeLatitude, placeLongitude, l
         Math.sin( Math.radians( placeLatitude ))));
     
     return language === 'ar'? 
-        (Math.round(distance * 100) / 100).toLocaleString('ar-EG').split('').reverse().join(''): 
+        (Math.round(distance * 100) / 100).toLocaleString('ar-EG'): 
         (Math.round(distance * 100) / 100);
 }
 

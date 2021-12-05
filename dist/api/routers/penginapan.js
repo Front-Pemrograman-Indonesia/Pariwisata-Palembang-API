@@ -1,16 +1,17 @@
 const router = require('express')();
 const path = require('path');
 const dataPenginapan = require(path.join(__basedir, '/config', '/data', '/dataPenginapan'));
-const calculateDistance = require('../../config/lib/calculateDistance');
+const calculateDistanceThenSetLanguage = require('../../config/lib/calculateDistanceThenSetLanguage');
 
 router.get('/', (req, res, next) => {
     const latitude = req.query.latitude? req.query.latitude: -2.988095;
     const longitude = req.query.longitude? req.query.longitude: 104.761095;
+    const language = req.query.language? req.query.language: 'en';
     try {
         const newDataPenginapan= [];
 
         for(let data of dataPenginapan){
-            const distance = calculateDistance(latitude, longitude, data.latitude, data.longitude);
+            const distance = calculateDistanceThenSetLanguage(latitude, longitude, data.latitude, data.longitude, language);
 
             newDataPenginapan.push({
                 ...data,
@@ -30,6 +31,7 @@ router.get('/', (req, res, next) => {
 router.get('/:id', (req, res, next) => {
     const latitude = req.query.latitude? req.query.latitude: -2.988095;
     const longitude = req.query.longitude? req.query.longitude: 104.761095;
+    const language = req.query.language? req.query.language: 'en';
     try {
         const { id } = req.params;
 
@@ -41,7 +43,7 @@ router.get('/:id', (req, res, next) => {
         });
 
         const distance = pilihanPenginapan.length > 0
-        ? calculateDistance(latitude, longitude, pilihanPenginapan[0].latitude, pilihanPenginapan[0].longitude)
+        ? calculateDistanceThenSetLanguage(latitude, longitude, pilihanPenginapan[0].latitude, pilihanPenginapan[0].longitude, language)
         : "not defined";
         
         pilihanPenginapan[0].distance = distance;

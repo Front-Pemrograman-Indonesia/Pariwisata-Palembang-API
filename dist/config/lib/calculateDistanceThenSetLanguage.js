@@ -6,7 +6,9 @@ const calculateDistance = (latitude, longitude, placeLatitude, placeLongitude, l
         Math.cos( Math.radians( placeLongitude ) - Math.radians(parseFloat(longitude)) ) + Math.sin( Math.radians(parseFloat(latitude)) ) * 
         Math.sin( Math.radians( placeLatitude ))));
     
-    return language === 'ar'? (Math.round(distance * 100) / 100).toLocaleString('ar-EG'): (Math.round(distance * 100) / 100);
+    return language === 'ar'? 
+        (Math.round(distance * 100) / 100).toLocaleString('ar-EG').split('').reverse().join(''): 
+        (Math.round(distance * 100) / 100);
 }
 
 module.exports = calculateDistance;

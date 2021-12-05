@@ -4,6 +4,24 @@ const dataWisata = require(path.join(__basedir, '/config', '/data', '/dataWisata
 const calculateDistanceThenSetLanguage = require('../../config/lib/calculateDistanceThenSetLanguage');
 const openOrCloseValidation = require('../../config/lib/openOrCloseValidation');
 const filterDataByLanguage = require('../../config/lib/filterDataByLanguage');
+const moment = require('moment-timezone');
+
+const openHoursFilter = (arrayOfOpenHours, language) => {
+    if(typeof arrayOfOpenHours !== 'object') {
+        return language === 'id'? 'buka 24 jam':
+            language === 'ar'? 'مفتوحة ٢٤ ساعة': 'open 24 hours'
+    }
+
+    const currentTimeInPalembang = moment().tz('Asia/Jakarta').format('YYYY-MM-DD HH:mm')
+    let userDay = moment(currentTimeInPalembang).format('dddd').toLocaleLowerCase();
+    for(let openHour of arrayOfOpenHours){
+        if(openHour.day === userDay){
+            return language === 'id'? `${moment(openHour.openTime, 'HH:mm:ss').format('HH:mm:ss')} - ${moment(openHour.closeTime, 'HH:mm:ss').format('HH:mm:ss')} WIB`:
+                language === 'ar'? `${moment(openHour.openTime, 'HH:mm:ss').format('hh:mm:ss a')} - ${moment(openHour.closeTime, 'HH:mm:ss').format('hh:mm:ss A')}`: 
+                    `${moment(openHour.openTime, 'HH:mm:ss').format('hh:mm:ss A')} - ${moment(openHour.closeTime, 'HH:mm:ss').format('hh:mm:ss A')}`;
+        }
+    }
+}
 
 router.get('/', async (req, res, next) => {
     const latitude = req.query.latitude? req.query.latitude: -2.988095;
@@ -59,6 +77,7 @@ router.get('/:id', (req, res, next) => {
             longitude: data.longitude,
             thumbnail: data.thumbnail,
             gallery: data.gallery,
+            openHours: openHoursFilter(data.open, language),
             distance: calculateDistanceThenSetLanguage(latitude, longitude, data.latitude, data.longitude, language),
             locationStatus: req.query.longitude && req.query.longitude? true: false
         }

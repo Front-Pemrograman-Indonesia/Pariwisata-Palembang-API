@@ -1,7 +1,6 @@
 const router = require('express')();
 const path = require('path');
 const dataKuliner = require(path.join(__basedir, '/config', '/data', '/dataKuliner'));
-const calculateDistance = require('../../config/lib/calculateDistanceThenSetLanguage');
 const calculateDistanceThenSetLanguage = require('../../config/lib/calculateDistanceThenSetLanguage');
 
 router.get('/', (req, res, next) => {
@@ -37,6 +36,7 @@ router.get('/', (req, res, next) => {
 router.get('/:id', (req, res, next) => {
     const latitude = req.query.latitude? req.query.latitude: -2.988095;
     const longitude = req.query.longitude? req.query.longitude: 104.761095;
+    const language = req.query.language? req.query.language: 'en';
     try {
         const { id } = req.params;
 
@@ -48,7 +48,7 @@ router.get('/:id', (req, res, next) => {
         });
 
         const distance = pilihanKuliner.length > 0
-            ? calculateDistance(latitude, longitude, pilihanKuliner[0].latitude, pilihanKuliner[0].longitude)
+            ? calculateDistanceThenSetLanguage(latitude, longitude, pilihanKuliner[0].latitude, pilihanKuliner[0].longitude, language)
             : "not found";
         
         pilihanKuliner[0].distance = distance;

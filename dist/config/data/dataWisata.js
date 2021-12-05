@@ -56,7 +56,6 @@ const data = [
         gallery: [
             '/images/jembatan-ampera-1.jpg',
             '/images/jembatan-ampera-2.jpg',
-            '/images/jembatan-ampera-3.jpg',
             '/images/jembatan-ampera-4.jpg'
         ]
     },
@@ -280,7 +279,7 @@ const data = [
         ]
     },
     {
-        id: 6,
+        id: 7,
         differentLanguage: [
             {
                 language: 'en',
@@ -310,16 +309,16 @@ const data = [
         ]
     },
     {
-        id: 7,
+        id: 8,
         differentLanguage: [
             {
                 language: 'en',
-                name: 'Balaputradeva Museum',
+                name: 'Balaputradewa Museum',
                 description: 'test',
             },
             {
                 language: 'in',
-                name: 'Museum Balaputradeva',
+                name: 'Museum Balaputradewa',
                 description: 'test',
             },
             {
@@ -339,7 +338,7 @@ const data = [
         ]
     },
     {
-        id: 8,
+        id: 9,
         differentLanguage: [
             {
                 language: 'en',
@@ -368,7 +367,7 @@ const data = [
         ]
     },
     {
-        id: 9,
+        id: 10,
         differentLanguage: [
             {
                 language: 'en',
@@ -397,7 +396,7 @@ const data = [
         ]
     },
     {
-        id: 10,
+        id: 11,
         differentLanguage: [
             {
                 language: 'en',

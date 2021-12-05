@@ -59,9 +59,7 @@ router.get('/:id', (req, res, next) => {
             longitude: data.longitude,
             thumbnail: data.thumbnail,
             gallery: data.gallery,
-            distance: language === 'ar'? 
-                calculateDistance(latitude, longitude, data.latitude, data.longitude).toLocaleString('ar-EG'):
-                calculateDistance(latitude, longitude, data.latitude, data.longitude),
+            distance: calculateDistanceThenSetLanguage(latitude, longitude, data.latitude, data.longitude, language),
             locationStatus: req.query.longitude && req.query.longitude? true: false
         }
 

@@ -21,6 +21,9 @@ const openHoursFilter = (arrayOfOpenHours, language) => {
                     `${moment(openHour.openTime, 'HH:mm:ss').format('hh:mm:ss A')} - ${moment(openHour.closeTime, 'HH:mm:ss').format('hh:mm:ss A')}`;
         }
     }
+    
+    return language === 'id'? 'destinasi sedang tidak buka saat ini':
+        language === 'ar'? 'الوجهة ليست مفتوحة في الوقت الحالي': 'the destination is not open at the moment'
 }
 
 router.get('/', async (req, res, next) => {

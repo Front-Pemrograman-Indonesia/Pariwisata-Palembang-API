@@ -65,7 +65,7 @@ const data = [
         differentLanguage: [
             {
                 language: 'en',
-                name: 'Jakabaring Sports Complex',
+                name: 'Jakabaring Sport City',
                 description: 'test',
             },
             {
@@ -79,8 +79,8 @@ const data = [
                 description: 'test',
             }
         ],
-        latitude: -3.017441,
-        longitude: 104.798137,
+        latitude: -3.0181776,
+        longitude: 104.7897575,
         thumbnail: '/images/jakabaring-sport-city-1.jpg',
         location: '',
         open: [
@@ -328,8 +328,8 @@ const data = [
                 description: 'test',
             }
         ],
-        latitude: -2.9950144,
-        longitude: 104.7173889,
+        latitude: -2.9508812,
+        longitude: 104.7284836,
         thumbnail: '/images/museum-balaputradewa-1.jpg',
         location: '',
         open: "everyday",
@@ -357,8 +357,8 @@ const data = [
                 description: 'test',
             }
         ],
-        latitude: -2.9950144,
-        longitude: 104.7173889,
+        latitude: -2.9901709,
+        longitude: 104.759221,
         thumbnail: '/images/museum-sultan-mahmud-badarudin-II-1.jpg',
         location: '',
         open: "everyday",
@@ -386,8 +386,8 @@ const data = [
                 description: 'test',
             }
         ],
-        latitude: -2.9950144,
-        longitude: 104.7173889,
+        latitude: -3.0111216,
+        longitude: 104.701841,
         thumbnail: '/images/bayt-alquran-1.jpg',
         location: '',
         open: "everyday",
@@ -415,8 +415,8 @@ const data = [
                 description: 'test',
             }
         ],
-        latitude: -2.9950144,
-        longitude: 104.7173889,
+        latitude: -2.9897871,
+        longitude: 104.7442172,
         thumbnail: '/images/kambang-iwak-1.jpg',
         location: '',
         open: "everyday",

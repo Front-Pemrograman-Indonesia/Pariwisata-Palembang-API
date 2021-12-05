@@ -304,7 +304,7 @@ const data = [
     {
         id: 44,
         name: 'Masjid Baitul Majid',
-        latitude: -99216,
+        latitude: -2.99216,
         longitude: 104.74912,
         idTypeTempatIbadah: 1
     },

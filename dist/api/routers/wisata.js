@@ -3,11 +3,7 @@ const path = require('path');
 const dataWisata = require(path.join(__basedir, '/config', '/data', '/dataWisata'));
 const calculateDistance = require('../../config/lib/calculateDistance');
 const openOrCloseValidation = require('../../config/lib/openOrCloseValidation');
-
-const filterDataByLanguage = (array, language) => {
-    let result = array.find(object => object.language === language);
-    return result? result: array.find(object => object.language === 'en');
-}
+const filterDataByLanguage = require('../../config/lib/filterDataByLanguage');
 
 router.get('/', async (req, res, next) => {
     const latitude = req.query.latitude? req.query.latitude: -2.988095;

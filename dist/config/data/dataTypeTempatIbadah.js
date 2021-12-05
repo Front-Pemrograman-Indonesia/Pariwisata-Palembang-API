@@ -1,27 +1,92 @@
 const data = [
     {
         id: 1,
-        name: 'Masjid',
+        differentLanguage: [
+            {
+                language: 'en',
+                name: 'Mosque'
+            },
+            {
+                language: 'in',
+                name: 'Masjid'
+            },
+            {
+                language: 'ar',
+                name: 'مسجد'
+            }
+        ],
         thumbnail: '/images/mosque.jpg'
     },
     {
         id: 2,
-        name: 'Gereja Katolik',
+        differentLanguage: [
+            {
+                language: 'en',
+                name: 'Catholic Church'
+            },
+            {
+                language: 'in',
+                name: 'Gereja Katolik'
+            },
+            {
+                language: 'ar',
+                name: 'الكنيسة الكاثوليكية'
+            }
+        ],
         thumbnail: '/images/catholic_church.jpg'
     },
     {
         id: 3,
-        name: 'Gereja Protestan',
+        differentLanguage: [
+            {
+                language: 'en',
+                name: 'Protestant Church'
+            },
+            {
+                language: 'in',
+                name: 'Gereja Protestan'
+            },
+            {
+                language: 'ar',
+                name: 'الكنيسة البروتستانتية'
+            }
+        ],
         thumbnail: '/images/protestant_church.jpg'
     },
     {
         id: 4,
-        name: 'Vihara',
+        differentLanguage: [
+            {
+                language: 'en',
+                name: 'Monastery'
+            },
+            {
+                language: 'in',
+                name: 'Vihara'
+            },
+            {
+                language: 'ar',
+                name: 'ديرصومعة'
+            }
+        ],
         thumbnail: '/images/monastery.jpg'
     },
     {
         id: 5,
-        name: 'Pura',
+        differentLanguage: [
+            {
+                language: 'en',
+                name: 'Temple'
+            },
+            {
+                language: 'in',
+                name: 'Pura'
+            },
+            {
+                language: 'ar',
+                name: 'معبد'
+            }
+        ],
         thumbnail: '/images/temple.jpg'
     }
 ]

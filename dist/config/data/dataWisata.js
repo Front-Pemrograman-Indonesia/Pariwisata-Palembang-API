@@ -105,9 +105,9 @@ const data = [
                 closeTime: '15:00:00.000 +0700'
             },
             {
-                day: 'saturday',
+                day: 'sunday',
                 openTime: '07:00:00.000 +0700',
-                closeTime: '12:44:00.000 +0700'
+                closeTime: '19:44:00.000 +0700'
             },
         ],
         gallery: [

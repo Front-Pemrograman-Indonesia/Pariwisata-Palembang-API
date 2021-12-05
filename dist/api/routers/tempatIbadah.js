@@ -3,10 +3,23 @@ const path = require('path');
 const dataTempatIbadah = require(path.join(__basedir, '/config', '/data', '/dataTempatIbadah'));
 const dataTypeTempatIbadah = require(path.join(__basedir, '/config', '/data', '/dataTypeTempatIbadah'));
 const calculateDistance = require('../../config/lib/calculateDistance');
+const filterDataByLanguage = require('../../config/lib/filterDataByLanguage');
 
 router.get('/', (req, res, next) => {
+    const language = req.query.language? req.query.language: 'en';
     try {
-        res.status(200).json({data: dataTypeTempatIbadah, dataLength: dataTypeTempatIbadah.length});
+        let filteredPrayPlace = [];
+        for(let prayPlaceType of dataTypeTempatIbadah){
+            let newData = {
+                id: prayPlaceType.id,
+                name: filterDataByLanguage(prayPlaceType.differentLanguage, language).name,
+                thumbnail: prayPlaceType.thumbnail
+            }
+
+            filteredPrayPlace.push(newData);
+        }
+
+        res.status(200).json({data: filteredPrayPlace, dataLength: filteredPrayPlace.length});
     } catch(error) {
         next(error);
     }

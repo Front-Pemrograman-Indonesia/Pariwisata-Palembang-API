@@ -1,7 +1,7 @@
 const router = require('express')();
 const path = require('path');
 const dataWisata = require(path.join(__basedir, '/config', '/data', '/dataWisata'));
-const calculateDistance = require('../../config/lib/calculateDistance');
+const calculateDistanceThenSetLanguage = require('../../config/lib/calculateDistanceThenSetLanguage');
 const openOrCloseValidation = require('../../config/lib/openOrCloseValidation');
 const filterDataByLanguage = require('../../config/lib/filterDataByLanguage');
 
@@ -22,9 +22,7 @@ router.get('/', async (req, res, next) => {
                 latitude: data.latitude,
                 longitude: data.longitude,
                 thumbnail: data.thumbnail,
-                distance: language === 'ar'? 
-                    calculateDistance(latitude, longitude, data.latitude, data.longitude).toLocaleString('ar-EG'):
-                    calculateDistance(latitude, longitude, data.latitude, data.longitude),
+                distance: calculateDistanceThenSetLanguage(latitude, longitude, data.latitude, data.longitude, language),
                 locationStatus: req.query.longitude && req.query.longitude? true: false,
                 openOrClose: typeof data.open != "object"? true: openOrCloseValidation(data.open)
             };
